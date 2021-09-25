@@ -1,0 +1,93 @@
+﻿@model IEnumerable<educationProject.Models.Docente>
+
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<style>
+    .icon {
+        font-size: 25px;
+        outline: none;
+        text-decoration: none;
+    }
+
+</style >
+
+    <p >
+    <a class="btn btn-success" asp-action="Create" > <i class="fas fa-plus-circle" > </i > Agregar</a >
+    </p >
+    @if (Model.Count() == 0)
+{
+ <div class="alert alert-danger" role="alert" >
+    <h4 class="alert-heading" > No hay informacion en la base de datos</h4 >
+    <hr >
+    <p class="mb-0" > Valide la información</p >
+    </div >
+
+}
+else { 
+
+ <table class="table">
+    <thead   class="table table-primary">
+    <tr >
+    <th >
+    @Html.DisplayNameFor(model => model.CedulaDocente)
+    </th >
+    <th >
+    @Html.DisplayNameFor(model => model.NombreDocente)
+    </th >
+    <th >
+    @Html.DisplayNameFor(model => model.ApellidoDocente)
+    </th >
+    <th >
+    @Html.DisplayNameFor(model => model.TelefonoDocente)
+    </th >
+    <th >
+    @Html.DisplayNameFor(model => model.DireccionDocente)
+    </th >
+    <th >
+    @Html.DisplayNameFor(model => model.NivelEducativo)
+    </th >
+    <th > Acciones</th >
+    </tr >
+    </thead >
+    <tbody  class="table-active">
+    @foreach (var item in Model)
+        {
+             <tr >
+    <td >
+    @Html.DisplayFor(modelItem => item.CedulaDocente)
+    </td >
+    <td >
+    @Html.DisplayFor(modelItem => item.NombreDocente)
+    </td >
+    <td >
+    @Html.DisplayFor(modelItem => item.ApellidoDocente)
+    </td >
+    <td >
+    @Html.DisplayFor(modelItem => item.TelefonoDocente)
+    </td >
+    <td >
+    @Html.DisplayFor(modelItem => item.DireccionDocente)
+    </td >
+    <td >
+    @Html.DisplayFor(modelItem => item.NivelEducativo)
+    </td >
+    <td>
+        <a asp-action="Edit" asp-route-id="@item.IdDocente" class=" text-warning icon"> <i class="far fa-edit"> </i> </a>
+        &nbsp;
+        <a class="text-info icon" asp-action="Details" asp-route-id="@item.IdDocente">
+            <i class="fas fa-clipboard-list"> </i>
+        </a>
+        &nbsp;
+        <a class="text-danger icon " asp-action="Delete" asp-route-id="@item.IdDocente"> <i class="fas fa-trash"> </i> </a>
+    </td>
+    </tr >
+        }
+    </tbody >
+    </table >
+
+
+}
+
+
